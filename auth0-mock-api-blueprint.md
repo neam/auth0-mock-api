@@ -17,7 +17,7 @@ To start the local mock server:
 
 The local api is then available on https://127.0.0.1:3000/
 
-Note: First time, you need to visit [https://127.0.0.1:3000/tokeninfo](https://127.0.0.1:3000/tokeninfo) an accept the self-signed certificate in each browser that you will be using the mock api.
+Note: First time, you need to visit [https://127.0.0.1:3000/tokeninfo](https://127.0.0.1:3000/tokeninfo) and accept the self-signed certificate in each browser that you will be using the mock api.
 
 To use this with auth0-angular, use the following settings in `.config()`:
 
@@ -48,6 +48,59 @@ Resources related to authentication in Auth0 API
 
 ## Token Info [/tokeninfo]
 ### Token Info [POST]
+
++ Request (application/x-www-form-urlencoded)
+
+        id_token=mocktokenignored
+
++ Response 200 (application/json)
+
+        {
+            "name": "John Doe",
+            "given_name": "John",
+            "family_name": "Doe",
+            "gender": "male",
+            "picture": "http://placehold.it/150x150",
+            "age_range": {"min": 21},
+            "devices": [{"hardware": "iPhone", "os": "iOS"}],
+            "updated_time": "2015-09-07T08:55:46+0000",
+            "installed": true,
+            "is_verified": false,
+            "locale": "en_US",
+            "name_format": "{first} {last}",
+            "verified": true,
+            "nickname": "auth0mockapi",
+            "user_metadata": {
+                "api_endpoints": [{"slug": "local"}],
+                "default_api_endpoint_slug": "local",
+                "original_mixpanel_distinct_id": "mock-original_mixpanel_distinct_id",
+                "signup_tracked": true
+            },
+            "email": "john.doe@example.com",
+            "app_metadata": {
+                "r0": {
+                    "permissions": {
+                        "example": {"superuser": 0, "groups": []}
+                    }
+                }
+            },
+            "email_verified": true,
+            "clientID": "foobar",
+            "updated_at": "2015-09-09T07:25:39.429Z",
+            "user_id": "auth0mockapi|123123123123123123",
+            "identities": [{
+                "access_token": "foobar",
+                "provider": "auth0mockapi",
+                "user_id": "123123123123123123",
+                "connection": "auth0mockapi",
+                "isSocial": true
+            }],
+            "created_at": "2015-09-03T10:10:43.432Z",
+            "global_client_id": "foobar"
+        }
+
+## Token Info [/userinfo]
+### Token Info [GET]
 
 + Request (application/x-www-form-urlencoded)
 
